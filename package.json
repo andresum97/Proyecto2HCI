@@ -1,0 +1,24 @@
+{
+  "name": "Proyecto2HCI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresum97/Proyecto2HCI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresum97/Proyecto2HCI/issues"
+  },
+  "homepage": "https://github.com/andresum97/Proyecto2HCI#readme",
+  "devDependencies": {
+    "electron": "^5.0.1"
+  }
+}
