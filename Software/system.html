@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Control del dispositivo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -139,12 +139,13 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="active"><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i>
+                        <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i>
                                 Dashboard</a>
                         </li>
                         <li><a data-toggle="tab" href="#mailbox"><i class="notika-icon notika-mail"></i> Reportes</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Interface"><i class="notika-icon notika-edit"></i> Control del
+                        <li class="active"><a data-toggle="tab" href="#Interface"><i
+                                    class="notika-icon notika-edit"></i> Control del
                                 dispositivo</a>
                         </li>
                         <li><a data-toggle="tab" href="#Charts"><i class="notika-icon notika-bar-chart"></i> Soporte</a>
@@ -197,71 +198,23 @@
         </div>
     </div>
     <!-- Main Menu area End-->
-    <!-- Start Status area -->
-    <div class="notika-status-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
-                        <div class="website-traffic-ctn">
-                            <h2><span class="counter">50,000</span></h2>
-                            <p>Cantidad de lecturas por el sistema</p>
-                        </div>
-                        <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
-                        <div class="website-traffic-ctn">
-                            <h2><span class="counter">90,000</span>k</h2>
-                            <p>Cantidad de lecturas durante la semana</p>
-                        </div>
-                        <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div style="height: 111px;"
-                        class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-                        <div class="website-traffic-ctn">
-                            <h2>$<span class="counter">40,000</span></h2>
-                            <p>Total de lecturas por día</p>
-                        </div>
-                        <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div style="height: 111px;"
-                        class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
-                        <div class="website-traffic-ctn">
-                            <h2><span class="counter">1,000</span></h2>
-                            <p>Total de visitas en el mes</p>
-                        </div>
-                        <div class="sparkline-bar-stats4">2,4,8,4,5,7,4,7,3,5,7,5</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Status area-->
     <!-- Start Sale Statistic area-->
     <div class="sale-statistic-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                <div style="margin-top: -50px;" class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
                     <div style="height: 462px;" class="sale-statistic-inner notika-shadow mg-tb-30">
                         <div class="curved-inner-pro">
                             <div class="curved-ctn">
-                                <h2>Cantidad de lecturas por semana</h2>
-                                <p>En esta sección puede visualizar la cantidad de lecturas que ha realizado el sensor
-                                    durante una semana.
-                                </p>
+                                <h2>Estado del dispositivo</h2>
+                                <p>Muestra una lectura en tiempo real del estado actual del sensor de movimiento</p>
                             </div>
                         </div>
-                        <div id="bar-chart" class="flot-chart bar-three bar-hm-three"></div>
+                        <div id="dynamic-chart" class="flot-chart dyn-ctn-fr bar-hm-three"></div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
+                    <div style="margin-top: -21px;" class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
                         <div class="past-day-statis">
                             <h2>Estado del dispositivo en los últimos 30 días</h2>
                             <p>Este es un resumen del control de lecturas que ha realizado
@@ -302,11 +255,47 @@
         </div>
     </div>
     <!-- End Sale Statistic area-->
+    <!-- Start Status area -->
+    <div class="notika-status-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
+                    <div style="margin-bottom: 30px;"
+                        class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2><span class="counter">50,000</span></h2>
+                            <p>Total de lecturas realizadas</p>
+                        </div>
+                        <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2><span class="counter">90,000</span>k</h2>
+                            <p>Total del lecturas por día</p>
+                        </div>
+                        <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
+                    <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
+                        <div class="website-traffic-ctn">
+                            <h2>$<span class="counter">40,000</span></h2>
+                            <p>Total de lecturas por hora</p>
+                        </div>
+                        <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Status area-->
     <!-- Start Status Statistic area-->
     <div class="notika-email-post-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="email-statis-inner notika-shadow">
                         <div class="email-ctn-round">
                             <div class="email-rdn-hd">
@@ -358,68 +347,61 @@
                     </div>
                 </div>
                 <!-- End Status Statistic area-->
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div style="height: 462px;" class="visitor-sv-tm-int sm-res-mg-t-30">
-                        <div class="contact-hd mg-bt-ant-inner server-sts-rgt">
-                            <h2>Estado del servidor</h2>
-                            <p>Este es un resumen del estado del servidor</p>
-                        </div>
-                        <div class="visitor-st-ch">
-                            <div id="dynamic-chart" class="flot-chart widget-dynamic-chart ant-ctn-dyn"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div style="height: 463px;"
-                        class="recent-post-wrapper notika-shadow sm-res-mg-t-30 tb-res-ds-n dk-res-ds">
-                        <div class="recent-post-ctn">
-                            <div class="recent-post-title">
-                                <h2>Ingresos recientes</h2>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div style="height: 422px; margin-top: 0px;width: 557px;" 
+                            class="normal-table-list mg-t-30">
+                            <div class="basic-tb-hd">
+                                <h2>Ingresos de administradores al sistema</h2>
                             </div>
-                        </div>
-                        <div class="recent-post-items">
-                            <div class="recent-post-signle rct-pt-mg-wp">
-                                <a href="#">
-                                    <div class="recent-post-flex">
-                                        <div class="recent-post-img">
-                                            <img src="img/post/2.jpg" alt="" />
-                                        </div>
-                                        <div class="recent-post-it-ctn">
-                                            <h2>Smith</h2>
-                                            <p>Ha ingresado a la plataforma</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="recent-post-signle">
-                                <a href="#">
-                                    <div class="recent-post-flex rct-pt-mg">
-                                        <div class="recent-post-img">
-                                            <img src="img/post/1.jpg" alt="" />
-                                        </div>
-                                        <div class="recent-post-it-ctn">
-                                            <h2>John Deo</h2>
-                                            <p>Ha ingresado a la plataforma</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="recent-post-signle">
-                                <a href="#">
-                                    <div class="recent-post-flex rct-pt-mg">
-                                        <div class="recent-post-img">
-                                            <img src="img/post/4.jpg" alt="" />
-                                        </div>
-                                        <div class="recent-post-it-ctn">
-                                            <h2>Malika</h2>
-                                            <p>Ha ingresado a la plataforma</p>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="bsc-tbl-st">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Username</th>
+                                            <th>Nickname</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Alexandra</td>
+                                            <td>Christopher</td>
+                                            <td>@makinton</td>
+                                            <td>Ducky</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Madeleine</td>
+                                            <td>Hollaway</td>
+                                            <td>@hollway</td>
+                                            <td>Cheese</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Sebastian</td>
+                                            <td>Johnston</td>
+                                            <td>@sebastian</td>
+                                            <td>Jaycee</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Mitchell</td>
+                                            <td>Christin</td>
+                                            <td>@mitchell4u</td>
+                                            <td>AdskiDeAnus</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
