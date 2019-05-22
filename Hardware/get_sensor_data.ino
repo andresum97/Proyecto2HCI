@@ -1,28 +1,32 @@
 #include <stdint.h>
-#define PIN A0
+
+#define READ_PIN A0
+#define EXIT A5
+#define CONTROL 7
+
 bool gate_control;
 uint16_t people_in;
-String message, quantity;
+String quantity;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(PIN, INPUT);
+  pinMode(READ_PIN, INPUT);
   people_in = 0;
   gate_control = false;
-  message = "Initialized";
-  Serial.println(message);
+  pinMode(EXIT, INPUT_PULLUP);
+  pinMode(CONTROL, OUTPUT);
+  digitalWrite(CONTROL, HIGH);
 }
 
 void loop() {
-  if (digitalRead(PIN) == LOW)
+  if (digitalRead(READ_PIN) == LOW)
   {
     people_in ++;
-    while (digitalRead(PIN) == LOW) {
-      Serial.println("Entrando");
+    while (digitalRead(READ_PIN) == LOW) {
+      delay(10);
     }
+    quantity = String(people_in);
+    Serial.print(people_in);
   }
-  quantity = String(people_in);
-  message = "Personas adentro: " + quantity;
-  Serial.println(message);
-  delay(250);
-}
+  delay(100);
+  }
