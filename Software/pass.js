@@ -17,13 +17,10 @@ var signOutBtn = document.getElementById('signOutBtn');
 
 signOutBtn.addEventListener('click', function(){
 
-    firebase.auth().signOut().then(function() {
-        console.log('laaaaaaaargo');
-        document.location.href = './login-forgotpass-confirmpass.html';
-      }).catch(function(error) {
-        console.log('error al largate');
-      });
-      
-    
-      
+  firebase.auth().signOut().then(function() {
+    console.log('laaaaaaaargo');
+    document.location.href = './login-forgotpass-confirmpass.html';
+  }).catch(function(error) {
+    console.log('error al largate');
+  });
 });

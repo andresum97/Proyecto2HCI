@@ -85,5 +85,20 @@ function observador(){
     });
   }
   observador();
+var changeBtn = document.getElementById('changeBtn');
+
+changeBtn.addEventListener('click', function(){
+
+    var auth = firebase.auth();
+    var emailC = document.getElementById('emailC').value;
+    console.log(emailC);
+    
+    auth.sendPasswordResetEmail(emailC).then(function() {
+      console.log("se envio un correo")
+    }).catch(function(error) {
+      console.log("el correo no esta asignado")
+    });
+    
+});
 
 
