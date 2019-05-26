@@ -13,7 +13,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 console.log(firebase);
 console.log(firebase.default.auth());
-var signInBtn = document.getElementById('signInBtn')
+var signInBtn = document.getElementById('signInBtn');
+
 
 signInBtn.addEventListener('click', function(){
 
@@ -44,4 +45,45 @@ signInBtn.addEventListener('click', function(){
         
         // ...
       });
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log('User is signed in.');
+        } else {
+            console.log('No user is signed in.');
+        }
+      });
+      
 });
+function observador(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        //aparece(user);
+        //console.log(user);
+        console.log("El usuario está logeado");
+        var displayName = user.displayName;
+        console.log(displayName);
+        var email = user.email;
+        console.log(email);
+        var emailVerified = user.emailVerified;
+        console.log(emailVerified);
+        var photoURL = user.photoURL;
+        console.log(photoURL);
+        var isAnonymous = user.isAnonymous;
+        console.log(isAnonymous);
+        var uid = user.uid;
+        console.log(uid);
+        var providerData = user.providerData;
+        console.log(providerData);
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+        console.log("El usuario no está logeado");
+      }
+    });
+  }
+  observador();
+
+
