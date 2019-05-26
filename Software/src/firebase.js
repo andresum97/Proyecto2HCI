@@ -1,4 +1,5 @@
-var firebase = require("firebase");
+var firebase = require("firebase/app");
+require('firebase/database');
 var Chart = require('chart.js');
 
 src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"
@@ -65,6 +66,93 @@ const firebaseConfig = {
       console.log("The read failed "+errorObject.code);
     });
   }
+
+  function datosanio(anio){
+    let grafico = document.getElementById('graficoanio').getContext('2d');
+    fecharef.on("value",function(snapshot){
+      var key = Object.keys(snapshot.val());
+      meses = [0,0,0,0,0,0,0,0,0,0,0,0];
+      for(i=0;i<key.length;i++){
+        // console.log('funciona');
+        var id = key[i];
+        var conn2 = firebase.database().ref('fecha/'+id);
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha;
+          res = connfecha.substring(6,8);
+          if(res == anio){
+            console.log(connfecha);
+            mes = connfecha.substring(3,5); 
+            console.log(mes);
+            if(mes == '01'){
+              meses[0] += 1
+            }
+            if(mes == '02'){
+              meses[1] += 1
+            }
+            if(mes == '03'){
+              meses[2] += 1
+            }
+            if(mes == '04'){
+              meses[3] += 1
+            }
+            if(mes == '05'){
+              meses[4] += 1
+            }
+            if(mes == '06'){
+              meses[5] += 1
+            }
+            if(mes == '07'){
+              meses[6] += 1
+            }
+            if(mes == '08'){
+              meses[7] += 1
+            }
+            if(mes == '09'){
+              meses[8] += 1
+            }
+            if(mes == '10'){
+              meses[9] += 1
+            }
+            if(mes == '11'){
+              meses[10] += 1
+            }
+            if(mes == '12'){
+              meses[11] += 1
+            }
+          }
+        });
+      }
+      console.log(meses);
+      let massPopChart = new Chart(grafico,{
+        type: 'bar',
+        data:{
+          labels:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+          datasets:[{
+            label:'Cantidad de personas por mes',
+            data:meses,
+            backgroundColor:[
+              'rgb(217,136,128)',
+              'rgb(241,148,138)',
+              'rgb(195,155,211)',
+              'rgb(187,143,206)',
+              'rgb(127,179,213)',
+              'rgb(133,193,233)',
+              'rgb(195,155,211)',
+              'rgb(118,215,196)',
+              'rgb(115,198,182)',
+              'rgb(125,206,160)',
+              'rgb(130,224,170)',
+              'rgb(247,220,111)'
+            ]
+          }]
+        },
+        options:{}
+      });
+    },function(errorObject){
+      console.log("The read failed "+errorObject.code);
+    });
+  }
   // leerDatostotales();
-  datosFecha('26/05/19');
+  // datosFecha('26/05/19');
+  datosanio('19');
   //console.log(leerDatostotales());
