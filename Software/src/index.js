@@ -23,7 +23,7 @@ app.on('ready',()=> {
         nodeIntegration:true
     }});
     mainWindow.loadURL(url.format({
-        pathname:path.join(__dirname,'../login.html'),
+        pathname:path.join(__dirname,'../login-forgotpass-confirmpass.html'),
         protocol: 'file',
         slashes: true
     }));
