@@ -1,0 +1,14 @@
+{
+  "name": "updater",
+  "version": "1.0.0",
+  "description": "Sube datos a Firebase",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^6.0.4"
+  }
+}
