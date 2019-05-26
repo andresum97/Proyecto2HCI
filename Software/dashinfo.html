@@ -277,23 +277,18 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseTwo">¿Cómo saber si la conexión al servidor es estable?</a>
+              href="#collapseTwo">¿Qué significan los view-cards?</a>
           </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse">
           <div class="panel-body">
-            El servidor es el encargado de almacenar la información que recopila el sensror, por lo que debe de estar
-            siempre conectado
-            para evitar pérdida de información. Hemos preparado una sección en donde usted podrá revisar si está
-            conectado y transmitiendo información,
-            pues es el encargado de indicarle al administrador el estado del servidor y la conexión. Debe de ingresar a
+           Los view cards son gráficos que muestran la información en forma de "total de cantidad" Es decir, 
+           en esta sección encontrará una cantidad finita desde la instalación del sensor para el día actual. 
+           Si desea obtener más información acerca del detalle de que brinda dicha información puede dirigirse a: 
             <strong>
-              <a href="system.html">
-                Control de dispositivo
+              <a href="report1.html">
+                Reportes
               </a>
-            </strong> y dirigirse al gráfico de <strong>Estado del server</strong> si la gráfica no muestra
-            actualizaciones contacte a
-            sorpote técnico.
           </div>
         </div>
       </div>
@@ -301,20 +296,39 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseThree">¿Cómo el sensor obtiene la información y como es trasladada al sistema?</a>
+              href="#collapseThree">¿Qué información brindan los gráficos principales?</a>
           </h4>
         </div>
         <div id="collapseThree" class="panel-collapse collapse">
           <div class="panel-body">
-            A continuación se enlístan los pasos que realiza el sensor para recopilar la información y
-            actualizar el servidor:
+           Los gráficos principales se dividen en dos. A cotninuación se hará un resumen por cada uno 
+           de los gráficos de la sección principal. 
             <ul>
-              <li>El sensor está conectado a un dispositivo Arduino</li>
-              <li>El Arduino es el encargado de interpretar la información que recopila el sensor</li>
-              <li>Si el Arduino no está transmitiendo información <strong>debe de desconectarlo</strong> y volverlo a
-                conectar</li>
-              <li>Al obtener la información el sistema se encarga de realizar la conexión con el servidor.</li>
+            <strong>Cantidad de lecturas por semana</strong>
+              <li>Brinda la información que ha recopilado el sensor en una semana (8 días)</li>
+              <li>El resultado es en tiempo real, por lo que el gráfico se actualizará en el día actual si recibe 
+                  una lectura en el sistema. 
+              </li>
+              <li>Si no actualiza la información debe de verificar si <strong>tiene conexión a internet</strong> y volverlo a
+                recargar</li>
+              <li>Al obtener la información el sistema se encarga de realizar la conexión con el servidor y mostrar la información 
+                  en el dashboard
+              </li>
               <li>El servidor tiene conexión directa en la plataforma por lo que al momento de obtener un dato
+                automáticamente se actualizará.</li>
+            </ul>
+             <ul>
+            <strong>Estado del dispositivo en los últimos 30 días</strong>
+              <li>Brinda la información del estado del dispositivo en los últimos 30 días</li>
+              <li>El resultado es en tiempo real, por lo que el gráfico se actualizará en el día actual si recibe 
+                  una lectura en el sistema. 
+              </li>
+              <li>Si no actualiza la información debe de verificar si <strong>tiene conexión a internet</strong> y volverlo a
+                recargar</li>
+              <li>Este es un resumen para evaluar la cantidad de lecturas que ha realizado el dispositivo 
+                  y controlar el mantenimiento que debe de tener el mismo. 
+              </li>
+              <li>El dispositivo tiene conexión directa en la plataforma por lo que al momento de obtener un dato
                 automáticamente se actualizará.</li>
             </ul>
           </div>
@@ -324,7 +338,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseFive">¿Qué cantidad de lecturas puede realizar el sensor?</a>
+              href="#collapseFive">¿Qué cantidad de lecturas puede mostrar el dashboard?</a>
           </h4>
         </div>
         <div id="collapseFive" class="panel-collapse collapse">
@@ -341,13 +355,13 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseSix">¿Qué acción debo de tomar con el servidor y el sistema al finalizar el día?</a>
+              href="#collapseSix">¿Qué información obtendo en "Nivel de rendimiento del dispositivo"?</a>
           </h4>
         </div>
         <div id="collapseSix" class="panel-collapse collapse">
           <div class="panel-body">
-            El servidor dejará de recopilar información a partir de las 22:00 hrs. Ya que a esa hora se realizará el
-            mantenimiento. Al finalizar el dia el dispositivo Arduino se desconectará a las 20:00 hrs.
+            Podrá ver los porcentajes de calibración y calidad del sensor. Esto le ayudará a validar 
+            que la información que esté recopilando sea la correcta. 
             <ul>
               Para validar que este comportamiento ocurre debe de seguir los siguientes pasos:
               <li>Verificar que no hayan lecturas entrantes en el sistema</li>
@@ -358,6 +372,19 @@
           </div>
         </div>
       </div>
+      <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
+                  href="#collapseSix">¿Qué información obtendo en "Estado del server"?</a>
+              </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse">
+              <div class="panel-body">
+                Podrá ver si la conexión al servidor es estable o no.
+              </div>
+            </div>
+          </div>
     </div>
   </div>
 
