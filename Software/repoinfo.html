@@ -230,13 +230,16 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">¿Cómo
-              ingreso sesión en el sistema?</a>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">¿Cuál es el objetivo de 
+                tener reportes dentro de la plataforma? 
+            </a>
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in">
           <div class="panel-body">
-            La cuenta que utilizará para obtener acceso a dicha plataforma es
+            Obtener información	 detallada acerca de la cantidad de estudiantes que ingresan a la biblioteca 
+            de la Universidad del Valle de Guatemala. Para ello deberá de ingresar a la sección de reportes con 
+
             <strong>su cuenta de administrador de la Universidad del Valle de Guatemala</strong>
             El único requerimiento es tener acceso directo a la plataforma. Si desea darle acceso a otro personal deberá
             de contactar
@@ -250,15 +253,14 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseTen">¿Que información obtengo en esta plataforma?</a>
+              href="#collapseTen">¿Cómo funcionan los reportes?</a>
           </h4>
         </div>
         <div id="collapseTen" class="panel-collapse collapse">
           <div class="panel-body">
-            Podrá obtener la cantidad total de estudiantes que ingresan a la biblioteca de la Universidad del Valle de
-            Guatemala
-            <strong>Campus Central.</strong> La plataforma muestra la información que recopila el sensor de movimiento
-            que se encuentra inslatado en la entrada principal.
+           Se obtienen rangos por día / hora / mes o semana esta información deberá de colocarla en los filtros del 
+           sistema. Cada uno de los reportes brinda información diferente al usuario. Actualmente, la plataforma cuenta con tres 
+           reportes de datos y un reporte que brinda el estado del dispositivo y las lecturas que ha realizado el sistema. 
           </div>
         </div>
       </div>
@@ -280,7 +282,7 @@
         </div>
       </div>
 
-      <div class="faqHeader">Conexión directa al servidor</div>
+      <div class="faqHeader">Cómo generar un reporte</div>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
@@ -309,21 +311,26 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseThree">¿Cómo el sensor obtiene la información y como es trasladada al sistema?</a>
+              href="#collapseThree">¿Cómo obtener información de los reportes?</a>
           </h4>
         </div>
         <div id="collapseThree" class="panel-collapse collapse">
           <div class="panel-body">
-            A continuación se enlístan los pasos que realiza el sensor para recopilar la información y
-            actualizar el servidor:
+           A continuación, se enumeran los pasos que debe de seguir para poder generar cualquier reporte en el sistema. 
             <ul>
-              <li>El sensor está conectado a un dispositivo Arduino</li>
-              <li>El Arduino es el encargado de interpretar la información que recopila el sensor</li>
-              <li>Si el Arduino no está transmitiendo información <strong>debe de desconectarlo</strong> y volverlo a
-                conectar</li>
-              <li>Al obtener la información el sistema se encarga de realizar la conexión con el servidor.</li>
-              <li>El servidor tiene conexión directa en la plataforma por lo que al momento de obtener un dato
-                automáticamente se actualizará.</li>
+            Al momento de ingresar al reporte, deberá de realizar los siguientes pasos: 
+              <li>Deberá de colocar información en los filtro. Se encuentran 
+                  divididos por cada una de las interaciones que pueda llegar a tener, por lo que 
+                  nunca estarán vacíos. 
+              </li>
+              <li>Al terminar de seleccionar los rangos e información que necesita deberá de verificar que 
+                  la información que obtendrá realmente es la que está filtrando. 
+              </li>
+              <li>Deberá de presionar el botón <strong>Generar</strong> para obtener la información</li>
+              <li>En breve, el servidor obtendrá la petición y preparará la información para que pueda 
+                  verla en las tablas
+              </li>
+              <li>Podrá imprimir el reporte si así lo desea y filtrar nuevamente información requerida.</li>
             </ul>
           </div>
         </div>
@@ -349,18 +356,22 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-              href="#collapseSix">¿Qué acción debo de tomar con el servidor y el sistema al finalizar el día?</a>
+              href="#collapseSix">¿Qué sucede si el reporte no responde? </a>
           </h4>
         </div>
         <div id="collapseSix" class="panel-collapse collapse">
           <div class="panel-body">
-            El servidor dejará de recopilar información a partir de las 22:00 hrs. Ya que a esa hora se realizará el
-            mantenimiento. Al finalizar el dia el dispositivo Arduino se desconectará a las 20:00 hrs.
+            Si el reporte no retornó ninguna información deberá de revisar los aspectos siguientes: 
             <ul>
               Para validar que este comportamiento ocurre debe de seguir los siguientes pasos:
               <li>Verificar que no hayan lecturas entrantes en el sistema</li>
               <li>Verificar en
                 <strong>Control del dispositivo</strong>que no hayan lecturas en los gráficos
+              </li>
+              <li>Verificar su conexión a internet</li>
+              <li>Verificar que su sesión permanezca activa</li>
+              <li>Verificar que día se está realizando la lectura. Si es un día en el que el sensor no obtuvo 
+                  información puede que haya sido un día de descanso dentro del establecimiento
               </li>
             </ul>
           </div>
