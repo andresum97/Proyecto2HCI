@@ -7,6 +7,7 @@
     <title>Inicio de Sesión</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -65,16 +66,16 @@
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
                     <div class="nk-int-st">
-                        <input type="text" class="form-control" placeholder="Correo electrónico">
+                        <input id="email" type="text" class="form-control" placeholder="Correo electrónico">
                     </div>
                 </div>
                 <div class="input-group mg-t-15">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
                     <div class="nk-int-st">
-                        <input type="password" class="form-control" placeholder="Contraseña">
+                        <input id="password" type="password" class="form-control" placeholder="Contraseña">
                     </div>
                 </div>
-                <a href="" data-ma-action="nk-login-switch" data-ma-block="#l-register" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></a>
+                <a data-ma-action="nk-login-switch" data-ma-block="#l-register" id="signInBtn" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></a>
             </div>
 
             <div class="nk-navigation nk-lg-ic">
@@ -168,6 +169,9 @@
     <!-- main JS
 		============================================ -->
     <script src="js/main.js"></script>
+
+    <script> require('./app.js')</script>
+
 </body>
 
 </html>
