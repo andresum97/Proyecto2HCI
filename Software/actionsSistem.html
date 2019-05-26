@@ -501,7 +501,10 @@
   </div>
   <!-- End Footer area-->
   <!-- jquery
-		============================================ -->
+    ============================================ -->
+    <script>
+      if (typeof module === 'object') {window.module = module; module = undefined;}
+      </script>
   <script src="js/vendor/jquery-1.12.4.min.js"></script>
   <!-- bootstrap JS
 		============================================ -->
@@ -566,6 +569,7 @@
   <!-- tawk chat JS
 		============================================ -->
   <script src="js/tawk-chat.js"></script>
+  <script>if (window.module) module = window.module;</script>
 </body>
 
 </html>
