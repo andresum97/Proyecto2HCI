@@ -61,9 +61,10 @@
   <!-- modernizr JS
 		============================================ -->
   <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="src/firebase.js"></script>
 </head>
 
-<body>
+<body onload="datosanio('19')">
   <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -230,6 +231,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="chart-container" style="position:relative;margin: auto;width: 80vw;">
+      <canvas id="graficoanio"></canvas>
     </div>
   </div>
   <!-- Breadcomb area End-->

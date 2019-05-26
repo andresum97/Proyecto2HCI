@@ -146,7 +146,17 @@ const firebaseConfig = {
             ]
           }]
         },
-        options:{}
+        options:{
+          responsive:true,
+          maintainAspectRatio: false,
+          scales:{
+            xAxes:[{
+              gridLines:{
+                display:false
+              }
+            }]
+          }
+        }
       });
     },function(errorObject){
       console.log("The read failed "+errorObject.code);
