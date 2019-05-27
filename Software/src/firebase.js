@@ -68,6 +68,168 @@ const firebaseConfig = {
     });
   }
 
+  function horaTabla(dia,anio,mes,intervalo){
+    var tabla = document.getElementById('tablahora');
+    fecharef.on("value",function(snapshot){
+      var key = Object.keys(snapshot.val());
+      cont = 0;
+      var horas1 = [0,0,0,0,0,0,0,0,0,0,0,0];
+      var horas2 = [0,0,0];
+      var horas3 = [0,0,0,0]
+      for(i=0;i<key.length;i++){
+        var id = key[i];
+        var conn2 = firebase.database().ref('fecha/'+id);
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha;
+          connmes = connfecha.substring(3,5);
+          connanio = connfecha.substring(6,8);
+          conndia = connfecha.substring(0,2);
+          connhora = snapshot.val().hora;
+          hora = connhora.substring(0,2);
+          if((connmes == mes) && (conndia == dia) && (connanio==anio)){
+            if(intervalo == '1'){
+              if(hora == '07'){
+                horas1[0] += 1;
+              }
+              if(hora == '08'){
+                horas1[1] += 1;
+              }
+              if(hora == '09'){
+                horas1[2] += 1;
+              }
+              if(hora == '10'){
+                horas1[3] += 1;
+              }
+              if(hora == '11'){
+                horas1[4] += 1;
+              }
+              if(hora == '12'){
+                horas1[5] += 1;
+              }
+              if(hora == '13'){
+                horas1[6] += 1;
+              }
+              if(hora == '14'){
+                horas1[7] += 1;
+              }
+              if(hora == '15'){
+                horas1[8] += 1;
+              }
+              if(hora == '16'){
+                horas1[9] += 1;
+              }
+              if(hora == '17'){
+                horas1[10] += 1;
+              }
+              if(hora == '18'){
+                horas1[11] += 1;
+              }
+            }//Primer if
+            if(intervalo=='2'){
+              horaint = parseInt(hora);
+              if(horaint>= 1 && horaint<13){
+                horas2[0] += 1;
+              }
+              if(horaint>= 13 && horaint<18){
+                horas2[1] += 1;
+              }
+              if(horaint>= 18 && horaint<19){
+                horas2[2] += 1;
+              }
+            }//Segundo if
+            if(intervalo=='3'){
+              horaint = parseInt(hora);
+              if(horaint>=7 && horaint<10){
+                horas3[0] += 1;
+              }
+              if(horaint>=10 && horaint<13){
+                horas3[1] += 1;
+              }
+              if(horaint>=13 && horaint<16){
+                horas3[2] += 1;
+              }
+              if(horaint>=16 && horaint<19){
+                horas3[3] += 1;
+              }
+            }
+          }
+        });
+      }
+      if(intervalo=='1'){
+        for(j=7;j<19;j++){
+          const nuevafila = `
+          <tr>
+          <td>${j}:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas1[j-7]}</td>
+          </tr>
+          `;
+          tabla.innerHTML += nuevafila;
+        }
+      }
+      if(intervalo=='2'){
+        const nuevafila = `
+          <tr>
+          <td>7:00-13:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas2[0]}</td>
+          </tr>
+          <tr>
+          <td>13:00-18:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas2[1]}</td>
+          </tr>
+          <tr>
+          <td>18:00-19:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas2[2]}</td>
+          </tr>
+          `;
+          tabla.innerHTML += nuevafila;
+      }
+      if(intervalo=='3'){
+        const nuevafila=`
+        <tr>
+        <td>7:00-10:00</td>
+        <td>${dia}</td>
+        <td>${mes}</td>
+        <td>${anio}</td>
+        <td>${horas3[0]}</td>
+        </tr>
+        <tr>
+          <td>10:00-13:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas3[1]}</td>
+        </tr>
+        <tr>
+          <td>13:00-16:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas3[2]}</td>
+        </tr>
+        <tr>
+          <td>16:00-19:00</td>
+          <td>${dia}</td>
+          <td>${mes}</td>
+          <td>${anio}</td>
+          <td>${horas3[3]}</td>
+          </tr>
+        `;
+        tabla.innerHTML += nuevafila;
+      }
+    });
+  }
 
   function mesTabla(mes,anio){
     var tabla = document.getElementById('tablames');
@@ -325,6 +487,96 @@ const firebaseConfig = {
           title:{
             display:true,
             text: 'Cantidad de personas que ingresaron en 20'+anio,
+            fontSize:15
+          },
+          legend:{
+            position:"right",
+            labels:{
+              fontColor:"#000"
+            }
+          },
+          responsive:true,
+          maintainAspectRatio: false,
+          scales:{
+            xAxes:[{
+              gridLines:{
+                display:false
+              }
+            }]
+          }
+        }
+      });
+    },function(errorObject){
+      console.log("The read failed "+errorObject.code);
+    });
+  }
+
+  function datosSemana(anio, mesr){
+    let grafico = document.getElementById('graficoanio').getContext('2d'); 
+    fecharef.on("value",function(snapshot){ 
+      var key = Object.keys(snapshot.val()); 
+      
+      semanas = [0,0,0,0]
+      for(i=0;i<key.length;i++){ 
+        
+        var id = key[i];
+        var conn2 = firebase.database().ref('fecha/'+id); 
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha; 
+         
+          res = connfecha.substring(6,8); 
+          
+          if(res == anio){
+            
+            mes = connfecha.substring(3,5);
+            console.log(mes)
+            console.log(mesr)
+            if(mes == mesr){
+
+              dia = connfecha.substring(0,2);
+              dia = parseInt(dia, 10);
+              console.log(dia)
+              if(dia <= 7){ 
+                semanas[0] += 1
+              }
+              if(dia > 7 && dia <= 14){
+                semanas[1] += 1
+              }
+              if(dia > 14 && dia <= 21){
+                semanas[2] += 1
+              }
+              if(dia > 21){
+                semanas[3] += 1
+              }
+            }
+          }
+        });
+      }
+      console.log(semanas);
+      
+      let massPopChart = new Chart(grafico,{ 
+        type: 'bar',
+        data:{
+          labels:['1-7','8-14','15-21','22-35'],
+          datasets:[{
+            label:'Personas',
+            data:semanas,
+            backgroundColor:[
+              'rgb(217,136,128)',
+              'rgb(241,148,138)',
+              'rgb(195,155,211)',
+              'rgb(187,143,206)'
+            ],
+            borderWidth:1,
+            borderColor:'#777',
+            hoverBorderWidth:3,
+            hoverBorderColor: '#000'
+          }]
+        },
+        options:{
+          title:{
+            display:true,
+            text: 'Cantidad de personas que ingresaron cada semana en el mes de '+mesr+' en el año 20'+anio,
             fontSize:15
           },
           legend:{
