@@ -67,8 +67,51 @@ const firebaseConfig = {
     });
   }
 
-  function horaTabla(dia,anio,mes,intervalo){
+  function horaTabla(dia,ani,mes1,inter){
     var tabla = document.getElementById('tablahora');
+    tabla.innerHTML = ``;
+    var anio = ani.substring(2,4);
+    var mes = '05';
+    var intervalo = '1';
+    if(mes1=='Enero'){
+      mes = '01'
+    }
+    if(mes1=='Febrero'){
+      mes = '02'
+    }
+    if(mes1=='Marzo'){
+      mes = '03'
+    }
+    if(mes1=='Abril'){
+      mes = '04'
+    }
+    if(mes1=='Mayo'){
+      mes = '05'
+    }
+    if(mes1=='Julio'){
+      mes = '07'
+    }
+    if(mes1=='Agosto'){
+      mes = '08'
+    }
+    if(mes1=='Septiembre'){
+      mes = '09'
+    }
+    if(mes1=='Octubre'){
+      mes = '10'
+    }
+    if(mes1=='Noviembre'){
+      mes = '11'
+    }
+    if(inter=='Cada hora'){
+      intervalo = '1'
+    }
+    if(inter=='Jornada'){
+      intervalo = '2'
+    }
+    if(inter=='Cada 3 horas'){
+      intervalo = '3'
+    }
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       cont = 0;
