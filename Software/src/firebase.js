@@ -396,9 +396,9 @@ const firebaseConfig = {
           connfecha = snapshot.val().fecha; //Aqui obtengo la fecha del objeto en firebase. dice fecha porque asi se llama el atributo en firebase
           res = connfecha.substring(6,8); //Aqui obtento el substring del año, osea para ver si es 19 por ejemplo
           if(res == anio){ //Comparo si el año es el que me pidieron, si es 18 o 19
-            console.log(connfecha);
+            //console.log(connfecha);
             mes = connfecha.substring(3,5);  //Aqui obtengo el mes
-            console.log(mes);
+            //console.log(mes);
             if(mes == '01'){ //Aqui comparo que mes es, y depende del mes aumenta el array la posición o el mes seleccionado
               meses[0] += 1
             }
@@ -438,7 +438,7 @@ const firebaseConfig = {
           }
         });
       }
-      console.log(meses);
+      //console.log(meses);
       let massPopChart = new Chart(grafico,{ //Aqui instancio la grafica
         type: 'bar',//Para que sea de barras
         data:{
@@ -495,7 +495,7 @@ const firebaseConfig = {
   }
 
   function datosSemana(anio, mesr){
-    let grafico = document.getElementById('graficoanio').getContext('2d'); 
+    let grafico = document.getElementById('graficosemana').getContext('2d'); 
     fecharef.on("value",function(snapshot){ 
       var key = Object.keys(snapshot.val()); 
       
@@ -512,13 +512,13 @@ const firebaseConfig = {
           if(res == anio){
             
             mes = connfecha.substring(3,5);
-            console.log(mes)
-            console.log(mesr)
+            //console.log(mes)
+            //console.log(mesr)
             if(mes == mesr){
 
               dia = connfecha.substring(0,2);
               dia = parseInt(dia, 10);
-              console.log(dia)
+              //console.log(dia)
               if(dia <= 7){ 
                 semanas[0] += 1
               }
@@ -535,20 +535,20 @@ const firebaseConfig = {
           }
         });
       }
-      console.log(semanas);
+      //console.log(semanas);
       
       let massPopChart = new Chart(grafico,{ 
         type: 'bar',
         data:{
-          labels:['1-7','8-14','15-21','22-35'],
+          labels:['Días 1-7','Días 8-14','Días 15-21','Días 22-35'],
           datasets:[{
             label:'Personas',
             data:semanas,
             backgroundColor:[
-              'rgb(217,136,128)',
-              'rgb(241,148,138)',
+              'rgb(150,136,34)',
+              'rgb(189,60,256)',
               'rgb(195,155,211)',
-              'rgb(187,143,206)'
+              'rgb(257,143,206)'
             ],
             borderWidth:1,
             borderColor:'#777',
@@ -586,7 +586,7 @@ const firebaseConfig = {
 
   function datosHora(dia,anio,mes,intervalo){
     
-    let grafico = document.getElementById('graficoanio').getContext('2d'); 
+    let grafico = document.getElementById('graficohora').getContext('2d'); 
     fecharef.on("value",function(snapshot){ 
       var key = Object.keys(snapshot.val()); 
       
@@ -691,18 +691,18 @@ const firebaseConfig = {
           }
         });
       }
-      console.log(horas3);
+     //  console.log(horas3);
       
       let massPopChart = new Chart(grafico,{ 
         type: 'bar',
         data:{
-          labels:['7:00-10:00','10:00-13:00','13:00-16:00','16:00-19:00'],
+          labels:['7:00 AM - 10:00 AM','10:00 AM - 13:00 PM','13:00 PM - 16:00 PM','16:00 PM - 19:00 PM'],
           datasets:[{
             label:'Personas',
             data:horas3,
             backgroundColor:[
-              'rgb(217,136,128)',
-              'rgb(241,148,138)',
+              'rgb(207,116,28)',
+              'rgb(141,14,238)',
               'rgb(195,155,211)',
               'rgb(187,143,206)'
             ],
@@ -715,7 +715,7 @@ const firebaseConfig = {
         options:{
           title:{
             display:true,
-            text: 'Cantidad de personas que ingresaron cada semana en el mes de',
+            text: 'Cantidad de personas que ingresaron a cierta hora en el mes de Mayo',
             fontSize:15
           },
           legend:{
@@ -738,7 +738,13 @@ const firebaseConfig = {
     },function(errorObject){
       console.log("The read failed "+errorObject.code);
     });
-  }
+  }/*
+  function graficar(dia1,anio1,mes1,intervalo1,anio2, mesr,anio3){
+    datosHora(dia1,anio1,mes1,intervalo1);
+    datosSemana(anio2, mesr);
+    datosanio(anio3);
+
+  }*/
   
   function logOut(){
     firebase.auth().signOut().then(function() {

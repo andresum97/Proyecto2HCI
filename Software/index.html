@@ -60,7 +60,7 @@
     <script src="src/firebase.js"></script>
 </head>
 
-<body onload="datosHora('25','19','05','3')">
+<body>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -272,21 +272,26 @@
     <!-- Start Sale Statistic area-->
     <div class="sale-statistic-area">
         <div class="container">
-            <div class="row">
+            <div class="row" >
                 <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
-                    <div style="height: 462px;" class="sale-statistic-inner notika-shadow mg-tb-30">
+                    <div style="height: 600;" class="sale-statistic-inner notika-shadow mg-tb-30">
                         <div class="curved-inner-pro">
                             <div class="curved-ctn">
-                                <h2>Cantidad de lecturas por semana</h2>
-                                <p>En esta sección puede visualizar la cantidad de lecturas que ha realizado el sensor
-                                    durante una semana.
+                                <h2>Gráficos recopilados </h2>
+                                <p>En esta sección puede visualizar la cantidad de personas que han ingresado en diferentes filtros.
                                 </p>
                             </div>
                         </div>
                         <!-- <div id="bar-chart" class="flot-chart bar-three bar-hm-three"></div> -->
                         <div class="chart-container" style="position:relative;margin: auto;">
                             <canvas id="graficoanio"></canvas>
-                          </div>
+                        </div>
+                        <div class="chart-container" style="position:relative;margin: auto;">
+                            <canvas id="graficohora"></canvas>
+                        </div>
+                        <div class="chart-container" style="position:relative;margin: auto;">
+                            <canvas id="graficosemana"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
@@ -544,6 +549,10 @@
     <script>
         var signOutBtn = document.getElementById('signOutBtn');
         signOutBtn.addEventListener('click', logOut);
+        datosHora('25','19','05','3');
+        datosSemana('19', '05');
+        datosanio('19');
+
     </script>
 
     
