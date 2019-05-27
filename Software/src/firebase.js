@@ -67,8 +67,51 @@ const firebaseConfig = {
     });
   }
 
-  function horaTabla(dia,anio,mes,intervalo){
+  function horaTabla(dia,ani,mes1,inter){
     var tabla = document.getElementById('tablahora');
+    tabla.innerHTML = ``;
+    var anio = ani.substring(2,4);
+    var mes = '05';
+    var intervalo = '1';
+    if(mes1=='Enero'){
+      mes = '01'
+    }
+    if(mes1=='Febrero'){
+      mes = '02'
+    }
+    if(mes1=='Marzo'){
+      mes = '03'
+    }
+    if(mes1=='Abril'){
+      mes = '04'
+    }
+    if(mes1=='Mayo'){
+      mes = '05'
+    }
+    if(mes1=='Julio'){
+      mes = '07'
+    }
+    if(mes1=='Agosto'){
+      mes = '08'
+    }
+    if(mes1=='Septiembre'){
+      mes = '09'
+    }
+    if(mes1=='Octubre'){
+      mes = '10'
+    }
+    if(mes1=='Noviembre'){
+      mes = '11'
+    }
+    if(inter=='Cada hora'){
+      intervalo = '1'
+    }
+    if(inter=='Jornada'){
+      intervalo = '2'
+    }
+    if(inter=='Cada 3 horas'){
+      intervalo = '3'
+    }
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       cont = 0;
@@ -230,8 +273,44 @@ const firebaseConfig = {
     });
   }
 
-  function mesTabla(mes,anio){
+  function mesTabla(mes1,ani){
     var tabla = document.getElementById('tablames');
+    tabla.innerHTML = ``;
+    var anio = ani.substring(2,4);
+    var mes = '05';
+    if(mes1=='Enero'){
+      mes = '01'
+    }
+    if(mes1=='Febrero'){
+      mes = '02'
+    }
+    if(mes1=='Marzo'){
+      mes = '03'
+    }
+    if(mes1=='Abril'){
+      mes = '04'
+    }
+    if(mes1=='Mayo'){
+      mes = '05'
+    }
+    if(mes1=='Julio'){
+      mes = '07'
+    }
+    if(mes1=='Agosto'){
+      mes = '08'
+    }
+    if(mes1=='Septiembre'){
+      mes = '09'
+    }
+    if(mes1=='Octubre'){
+      mes = '10'
+    }
+    if(mes1=='Noviembre'){
+      mes = '11'
+    }
+    console.log("llego");
+    console.log(anio);
+    console.log(mes);
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       cont = 0;
@@ -262,8 +341,10 @@ const firebaseConfig = {
     });
   }
 
-  function anioTabla(anio){
+  function anioTabla(ani){
     var tabla = document.getElementById('tablaanio');
+    tabla.innerHTML = ``;
+    anio = ani.substring(2,4)
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       meses = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -501,56 +582,122 @@ const firebaseConfig = {
     });
   }
 
-  function datosHora(diar, horar, mesr,){
+  function datosHora(dia,anio,mes,intervalo){
+    
     let grafico = document.getElementById('graficoanio').getContext('2d'); 
     fecharef.on("value",function(snapshot){ 
       var key = Object.keys(snapshot.val()); 
       
-      semanas = [0,0,0,0]
-      for(i=0;i<key.length;i++){ 
-        
-        var id = key[i];
-        var conn2 = firebase.database().ref('fecha/'+id); 
-        conn2.on('value',function(snapshot){
-          connfecha = snapshot.val().fecha; 
-         
-          res = connfecha.substring(6,8); 
-          
-          if(res == anio){
-            
-            mes = connfecha.substring(3,5);
-            console.log(mes)
-            console.log(mesr)
-            if(mes == mesr){
+      cont = 0;
+      var horas1 = [0,0,0,0,0,0,0,0,0,0,0,0];
+      var horas2 = [0,0,0];
+      var horas3 = [0,0,0,0]
 
-              dia = connfecha.substring(0,2);
-              dia = parseInt(dia, 10);
-              console.log(dia)
-              if(dia <= 7){ 
-                semanas[0] += 1
+      
+
+      for(i=0;i<key.length;i++){
+        var id = key[i];
+        var conn2 = firebase.database().ref('fecha/'+id);
+        
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha;
+          connmes = connfecha.substring(3,5);
+          
+          connanio = connfecha.substring(6,8);
+          conndia = connfecha.substring(0,2);
+          connhora = snapshot.val().hora;
+          hora = connhora.substring(0,2);
+
+          
+          /*console.log(dia);
+          console.log(anio);
+          console.log(mes);
+          console.log(intervalo);*/
+          if((connmes == mes) && (conndia == dia) && (connanio==anio)){
+
+            //console.log('intervalo grafica');
+            //console.log(intervalo);
+            //console.log(intervalo);
+            if(intervalo == '1'){
+              //console.log('entro al if de grafica');
+              if(hora == '07'){
+                horas1[0] += 1;
               }
-              if(dia > 7 && dia <= 14){
-                semanas[1] += 1
+              if(hora == '08'){
+                horas1[1] += 1;
               }
-              if(dia > 14 && dia <= 21){
-                semanas[2] += 1
+              if(hora == '09'){
+                horas1[2] += 1;
               }
-              if(dia > 21){
-                semanas[3] += 1
+              if(hora == '10'){
+                horas1[3] += 1;
+              }
+              if(hora == '11'){
+                horas1[4] += 1;
+              }
+              if(hora == '12'){
+                horas1[5] += 1;
+              }
+              if(hora == '13'){
+                horas1[6] += 1;
+              }
+              if(hora == '14'){
+                horas1[7] += 1;
+              }
+              if(hora == '15'){
+                horas1[8] += 1;
+              }
+              if(hora == '16'){
+                horas1[9] += 1;
+              }
+              if(hora == '17'){
+                horas1[10] += 1;
+              }
+              if(hora == '18'){
+                horas1[11] += 1;
+              }
+            }//Primer if
+            if(intervalo=='2'){
+              //console.log('entro al if2 de grafica');
+              horaint = parseInt(hora);
+              if(horaint>= 1 && horaint<13){
+                horas2[0] += 1;
+              }
+              if(horaint>= 13 && horaint<18){
+                horas2[1] += 1;
+              }
+              if(horaint>= 18 && horaint<19){
+                horas2[2] += 1;
+              }
+            }//Segundo if
+            if(intervalo=='3'){
+              //console.log('entro al if3 de grafica');
+              horaint = parseInt(hora);
+              if(horaint>=7 && horaint<10){
+                horas3[0] += 1;
+              }
+              if(horaint>=10 && horaint<13){
+                horas3[1] += 1;
+              }
+              if(horaint>=13 && horaint<16){
+                horas3[2] += 1;
+              }
+              if(horaint>=16 && horaint<19){
+                horas3[3] += 1;
               }
             }
           }
         });
       }
-      console.log(semanas);
+      console.log(horas3);
       
       let massPopChart = new Chart(grafico,{ 
         type: 'bar',
         data:{
-          labels:['1-7','8-14','15-21','22-35'],
+          labels:['7:00-10:00','10:00-13:00','13:00-16:00','16:00-19:00'],
           datasets:[{
             label:'Personas',
-            data:semanas,
+            data:horas3,
             backgroundColor:[
               'rgb(217,136,128)',
               'rgb(241,148,138)',
@@ -566,7 +713,7 @@ const firebaseConfig = {
         options:{
           title:{
             display:true,
-            text: 'Cantidad de personas que ingresaron cada semana en el mes de '+mesr+' en el año 20'+anio,
+            text: 'Cantidad de personas que ingresaron cada semana en el mes de',
             fontSize:15
           },
           legend:{
