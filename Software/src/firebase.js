@@ -71,6 +71,7 @@ const firebaseConfig = {
 
   function horaTabla(dia,ani,mes1,inter){
     var tabla = document.getElementById('tablahora');
+    var total =  document.getElementById('totalpersonas');
     tabla.innerHTML = ``;
     var anio = ani.substring(2,4);
     var mes = '05';
@@ -116,7 +117,7 @@ const firebaseConfig = {
     }
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
-      cont = 0;
+      var cont = 0;
       var horas1 = [0,0,0,0,0,0,0,0,0,0,0,0];
       var horas2 = [0,0,0];
       var horas3 = [0,0,0,0]
@@ -131,6 +132,7 @@ const firebaseConfig = {
           connhora = snapshot.val().hora;
           hora = connhora.substring(0,2);
           if((connmes == mes) && (conndia == dia) && (connanio==anio)){
+            cont += 1;
             if(intervalo == '1'){
               if(hora == '07'){
                 horas1[0] += 1;
@@ -199,6 +201,7 @@ const firebaseConfig = {
           }
         });
       }
+      total.innerHTML = "Total de personas: "+cont;
       if(intervalo=='1'){
         for(j=7;j<19;j++){
           const nuevafila = `
