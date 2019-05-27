@@ -51,7 +51,7 @@ const firebaseConfig = {
     // });
   }
 
-  function mostrarDatos(){
+  function mostrarDatos(anio,mes,dia){
     var lecturastotales= document.getElementById('lectotal');
     var lecturasmes = document.getElementById('lecmes');
     var lecturasdia = document.getElementById('lecdia');
@@ -67,13 +67,14 @@ const firebaseConfig = {
         conttotal += 1;
         var conn2 = firebase.database().ref('fecha/'+id);
         // conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha;
 
         // });
       }
       lecturastotales.innerHTML = conttotal;
       lecturasmes.innerHTML = contmes;
       lecturasdia.innerHTML = contdia;
-      lecturasanio.innerHTML = connanio;
+      lecturasanio.innerHTML = contanio;
     });
   }
   function datosFecha(fecha){
