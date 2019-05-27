@@ -493,8 +493,11 @@
 
     <script src="js/tawk-chat.js"></script>
     <script>if (window.module) module = window.module;</script>
-    <script> require('./src/firebase.js')</script>
-    <script> require('./pass.js')</script>
+    <script>
+      var signOutBtn = document.getElementById('signOutBtn');
+      signOutBtn.addEventListener('click', logOut);
+    </script>
+
 
 
 </html>

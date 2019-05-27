@@ -514,11 +514,6 @@
     <script src="js/bootstrap-select/bootstrap-select.js"></script>
     <!-- bootstrap select CSS
 		============================================ -->
-<<<<<<< HEAD
-  <script src="js/tawk-chat.js"></script>
-  <script>if (window.module) module = window.module;</script>
-</body>
-=======
     <link rel="stylesheet" href="css/bootstrap-select/bootstrap-select.css">
     <!-- wave CSS
 		============================================ -->
@@ -527,9 +522,10 @@
 
     <script src="js/tawk-chat.js"></script>
     <script>if (window.module) module = window.module;</script>
-    <script> require('./src/firebase.js')</script>
-    <script> require('./pass.js')</script>
+    <script>
+      var signOutBtn = document.getElementById('signOutBtn');
+      signOutBtn.addEventListener('click', logOut);
+    </script>
 
->>>>>>> 8f678a337efd7be902f48cc8d5a177a65c722364
 
 </html>

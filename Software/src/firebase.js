@@ -1,5 +1,7 @@
 var firebase = require("firebase/app");
+require('firebase/auth');
 require('firebase/database');
+
 var Chart = require('chart.js');
 
 src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"
@@ -737,7 +739,13 @@ const firebaseConfig = {
       console.log("The read failed "+errorObject.code);
     });
   }
-  // leerDatostotales();
-  // datosFecha('26/05/19');
-  //datosanio('19');
-//console.log(leerDatostotales());
+  
+  function logOut(){
+    firebase.auth().signOut().then(function() {
+      console.log('laaaaaaaargo');
+      document.location.href = './login-confirmpass.html';
+    }).catch(function(error) {
+      console.log('error al largate');
+    });
+
+  }
