@@ -67,15 +67,8 @@ function CrearnuevaVentana(){
 //Creamos el vector para el menu
 const templateMenu=[
     {
-        label: 'File',
+        label: 'Archivo',
         submenu: [
-            {
-                label: 'Opciones',
-                accelerator: 'Ctrl+N',
-                click(){
-                    CrearnuevaVentana();
-                }
-            },
             //podemosa gregar más cosas
             {
                 label: 'Salir',
@@ -92,7 +85,7 @@ const templateMenu=[
 //Ventanas
 if(process.env.NODE_ENV !== 'production'){
     templateMenu.push({
-        label:'DevTools',
+        label:'Herramientas',
         submenu:[
             {
                 label:'Show/Hide Dev Tools',
@@ -102,6 +95,7 @@ if(process.env.NODE_ENV !== 'production'){
                 }
             },
             {
+                label: 'Recargar',
                 role: 'reload'
             }
         ]
