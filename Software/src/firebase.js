@@ -50,6 +50,32 @@ const firebaseConfig = {
     //   }
     // });
   }
+
+  function mostrarDatos(){
+    var lecturastotales= document.getElementById('lectotal');
+    var lecturasmes = document.getElementById('lecmes');
+    var lecturasdia = document.getElementById('lecdia');
+    var lecturasanio = document.getElementById('lecanio');
+    var conttotal = 0;
+    var contmes = 0;
+    var contdia = 0;
+    var contanio = 0;
+    fecharef.on("value",function(snapshot){
+      var key = Object.keys(snapshot.val());
+      for(i=0;i<key.length;i++){
+        var id = key[i];
+        conttotal += 1;
+        var conn2 = firebase.database().ref('fecha/'+id);
+        // conn2.on('value',function(snapshot){
+
+        // });
+      }
+      lecturastotales.innerHTML = conttotal;
+      lecturasmes.innerHTML = contmes;
+      lecturasdia.innerHTML = contdia;
+      lecturasanio.innerHTML = connanio;
+    });
+  }
   function datosFecha(fecha){
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
