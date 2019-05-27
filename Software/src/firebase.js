@@ -68,6 +68,37 @@ const firebaseConfig = {
   }
 
 
+  function mesTabla(mes,anio){
+    var tabla = document.getElementById('tablames');
+    fecharef.on("value",function(snapshot){
+      var key = Object.keys(snapshot.val());
+      cont = 0;
+      for(i=0;i<key.length;i++){
+        var id = key[i];
+        var conn2 = firebase.database().ref('fecha/'+id);
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha;
+          connmes = connfecha.substring(3,5);
+          connanio = connfecha.substring(6,8);
+          if((connmes == mes) && (connanio == anio)){
+            cont +=1;
+            hora = snapshot.val().hora;
+            dia = connfecha.substring(0,2);
+            const nuevafila = `
+            <tr>
+            <td>${cont}</td>
+            <td>${dia}</td>
+            <td>${mes}</td>
+            <td>${anio}</td>
+            <td>${hora}</td>
+            </tr>
+          `;
+         tabla.innerHTML += nuevafila;
+          }
+        });
+      }
+    });
+  }
 
   function anioTabla(anio){
     var tabla = document.getElementById('tablaanio');
