@@ -11,8 +11,6 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-console.log(firebase);
-console.log(firebase.default.auth());
 var signInBtn = document.getElementById('signInBtn');
 
 
@@ -20,11 +18,18 @@ signInBtn.addEventListener('click', function(){
 
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    console.log(email);
-    console.log(password);
+    var alertaL = document.getElementById('alertaL');
+    //console.log(email);
+    //console.log(password);
     
     
     firebase.auth().signInWithEmailAndPassword(email, password).then(function(){
+      alertaL.innerHTML = `
+            <div class="mt-3"></div>
+            <div class="alert alert-success" role="alert">
+            Bienvenido
+            </div>
+          `;
         document.location.href = './index.html';
         
     }).catch(function(error) {
@@ -35,12 +40,31 @@ signInBtn.addEventListener('click', function(){
         console.log(errorMessage);
         if(errorCode =="auth/wrong-password"){
             console.log('contrasenia mala xd')
+            alertaL.innerHTML = `
+            <div class="mt-3"></div>
+            <div class="alert alert-danger" role="alert">
+            La contraseña no es correcta.
+            </div>
+          `;
         }
         if(errorCode =="auth/user-not-found"){
-            console.log('usuario malo xd')
+          console.log('usuario malo xd');
+          alertaL.innerHTML = `
+            <div class="mt-3"></div>
+            <div class="alert alert-danger" role="alert">
+            El correo no está registrado.
+            </div>
+          `;
         }
         if(errorCode =="auth/invalid-email"){
             console.log('meta un correo valido xd')
+            alertaL.innerHTML = `
+            <div class="mt-3"></div>
+            <div class="alert alert-danger" role="alert">
+            El correo no es válido. <br>
+            HINT: Debe de contener una @
+            </div>
+          `;
         }
         
         // ...
@@ -49,8 +73,10 @@ signInBtn.addEventListener('click', function(){
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           console.log('User is signed in.');
+          
         } else {
             console.log('No user is signed in.');
+            
         }
       });
       
@@ -91,12 +117,27 @@ changeBtn.addEventListener('click', function(){
 
     var auth = firebase.auth();
     var emailC = document.getElementById('emailC').value;
+    var alertaPass = document.getElementById('alertaPass');
     console.log(emailC);
     
     auth.sendPasswordResetEmail(emailC).then(function() {
       console.log("se envio un correo")
+      alertaPass.innerHTML = `
+            <div class="mt-3"></div>
+            <div class="alert alert-success" role="alert">
+            Correo válido. <br>
+            Verifique su email para continuar el cambio.
+            </div>
+          `;
     }).catch(function(error) {
       console.log("el correo no esta asignado")
+      alertaPass.innerHTML = `
+            <div class="mt-3"></div>
+            <div class="alert alert-danger" role="alert">
+            El correo no es válido. <br>
+            No se envió mail de cambio.
+            </div>
+          `;
     });
     
 });
