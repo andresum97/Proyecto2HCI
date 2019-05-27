@@ -233,32 +233,45 @@
                   </div>
                   <div class="breadcomb-ctn">
                     <h2>Reporte de administración</h2>
-                    <p>Deberá de ingresar la información <span class="bread-ntd">que desea obtener del sistema</span></p>
+                    <p style="margin-bottom: 50px;">Deberá de ingresar la información <span class="bread-ntd">que desea
+                        obtener del sistema</span></p>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-                <div class="breadcomb-report">
-                  <button data-toggle="tooltip" data-placement="left" title="Imprimir" class="btn"><i
-                      class="notika-icon notika-sent"></i></button>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                <div class="row">
+                  <div style="margin-left: 62px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="nk-int-mk sl-dp-mn">
+                      <h2>Año: </h2>
+                    </div>
+                    <div class="bootstrap-select fm-cmp-mg">
+                      <select class="selectpicker">
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                        <option>2016</option>
+                        <option>2015</option>
+                        <option>2014</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="chart-container" style="position:relative;margin: auto;width: 80vw;">
+        <canvas id="graficoanio"></canvas>
+      </div>
     </div>
-    <div class="chart-container" style="position:relative;margin: auto;width: 80vw;">
-      <canvas id="graficoanio"></canvas>
-    </div>
-  </div>
-  <!-- Breadcomb area End-->
+    <!-- Breadcomb area End-->
   <!-- Data Table area Start-->
   <div class="data-table-area">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="data-table-list">
+          <div style="margin-top: -110px;" class="data-table-list">
             <div class="table-responsive">
               <table id="data-table-basic" class="table table-striped">
                 <thead>
@@ -376,7 +389,14 @@
 		============================================ -->
   <script src="js/main.js"></script>
   <!-- tawk chat JS
+    ============================================ -->
+   <!-- bootstrap select JS
 		============================================ -->
+    <script src="js/bootstrap-select/bootstrap-select.js"></script>
+  <!-- bootstrap select CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/bootstrap-select/bootstrap-select.css">
+    
   <script src="js/tawk-chat.js"></script>
   <script>if (window.module) module = window.module;</script>
   <script> require('./src/firebase.js')</script>
