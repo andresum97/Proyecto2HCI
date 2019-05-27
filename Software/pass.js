@@ -19,7 +19,7 @@ signOutBtn.addEventListener('click', function(){
 
   firebase.auth().signOut().then(function() {
     console.log('laaaaaaaargo');
-    document.location.href = './login-forgotpass-confirmpass.html';
+    document.location.href = './login-confirmpass.html';
   }).catch(function(error) {
     console.log('error al largate');
   });
