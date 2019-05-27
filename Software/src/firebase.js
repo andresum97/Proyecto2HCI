@@ -56,25 +56,49 @@ const firebaseConfig = {
     var lecturasmes = document.getElementById('lecmes');
     var lecturasdia = document.getElementById('lecdia');
     var lecturasanio = document.getElementById('lecanio');
+    var lecturastotales2 = document.getElementById('lect2');
+    var lecturasdia2 = document.getElementById('dia2');
+    var lecturahora = document.getElementById('hora');
     var conttotal = 0;
     var contmes = 0;
     var contdia = 0;
     var contanio = 0;
+    var conthora = 0;
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       for(i=0;i<key.length;i++){
         var id = key[i];
         conttotal += 1;
         var conn2 = firebase.database().ref('fecha/'+id);
-        // conn2.on('value',function(snapshot){
+         conn2.on('value',function(snapshot){
           connfecha = snapshot.val().fecha;
-
-        // });
+          connmes = connfecha.substring(3,5);
+          connanio = connfecha.substring(6,8);
+          conndia = connfecha.substring(0,2);
+          connhora = snapshot.val().hora;
+          hora = connhora.substring(0,2);
+          hora1 = parseInt(hora);
+          if((connmes==mes) && (connanio==anio)){
+            contmes +=1;
+          }
+          if((conndia==dia) && (connmes==mes) && (connanio == anio)){
+            contdia += 1;
+          }
+          if(connanio==anio){
+            contanio += 1;
+          }
+          if((hora1>=19 && hora1<21) && (connanio==anio) && (conndia==dia)&&(connmes==mes)){
+            conthora +=1;
+          }
+         });
       }
       lecturastotales.innerHTML = conttotal;
+      lecturasdia2.innerHTML = contdia;
+      lecturastotales2.innerHTML = conttotal;
       lecturasmes.innerHTML = contmes;
       lecturasdia.innerHTML = contdia;
       lecturasanio.innerHTML = contanio;
+      lecturahora.innerHTML = conthora;
     });
   }
   function datosFecha(fecha){
