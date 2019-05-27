@@ -18,7 +18,6 @@ const firebaseConfig = {
 
   var db= firebase.database();
   var fecharef = firebase.database().ref().child("fecha");
-  //console.log(fecharef);
  
   // console.log(firebase.auth) // Undefined
   // console.log(firebase.default.auth) // Function
@@ -278,7 +277,7 @@ const firebaseConfig = {
           res = connfecha.substring(6,8);
           if(res == anio){
             cont +=1;
-            //console.log(connfecha);
+            console.log(connfecha);
             hora = snapshot.val().hora;
             dia = connfecha.substring(0,2);
             mes = connfecha.substring(3,5);
@@ -305,7 +304,6 @@ const firebaseConfig = {
     let grafico = document.getElementById('graficoanio').getContext('2d'); //aqui mando a llamar al canvas desde el archivo html
     fecharef.on("value",function(snapshot){ //Aqui realizo la conexion, si miras arriba la variable fecharef tiene la direccion de firebase
       var key = Object.keys(snapshot.val()); //Jalo las llaves para poder obtener la data y que cantidad hay
-      //console.log(key);
       meses = [0,0,0,0,0,0,0,0,0,0,0,0]; //Array donde guarda la info de personas por mes por eso hay 12 espacios
       for(i=0;i<key.length;i++){ //Recorrer todos los objetos
         // console.log('funciona');
@@ -313,12 +311,11 @@ const firebaseConfig = {
         var conn2 = firebase.database().ref('fecha/'+id); //Aqui esa conexion la utilizo para poder buscar cada objeto por separado
         conn2.on('value',function(snapshot){
           connfecha = snapshot.val().fecha; //Aqui obtengo la fecha del objeto en firebase. dice fecha porque asi se llama el atributo en firebase
-          //console.log(connfecha);
           res = connfecha.substring(6,8); //Aqui obtento el substring del año, osea para ver si es 19 por ejemplo
           if(res == anio){ //Comparo si el año es el que me pidieron, si es 18 o 19
-           // console.log(connfecha);
+            console.log(connfecha);
             mes = connfecha.substring(3,5);  //Aqui obtengo el mes
-            //console.log(mes);
+            console.log(mes);
             if(mes == '01'){ //Aqui comparo que mes es, y depende del mes aumenta el array la posición o el mes seleccionado
               meses[0] += 1
             }
@@ -358,104 +355,7 @@ const firebaseConfig = {
           }
         });
       }
-      //console.log(meses);
-      let massPopChart = new Chart(grafico,{ //Aqui instancio la grafica
-        type: 'bar',//Para que sea de barras
-        data:{
-          labels:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],//La info de abajo de la gráfica
-          datasets:[{
-            label:'Personas',
-            data:meses,//Aqui meto el array de info
-            backgroundColor:[
-              'rgb(217,136,128)',
-              'rgb(241,148,138)',
-              'rgb(195,155,211)',
-              'rgb(187,143,206)',
-              'rgb(127,179,213)',
-              'rgb(133,193,233)',
-              'rgb(195,155,211)',
-              'rgb(118,215,196)',
-              'rgb(115,198,182)',
-              'rgb(125,206,160)',
-              'rgb(130,224,170)',
-              'rgb(247,220,111)'
-            ],
-            borderWidth:1,
-            borderColor:'#777',
-            hoverBorderWidth:3,
-            hoverBorderColor: '#000'
-          }]
-        },//Esto de aqui dejalo igual, salvo por la parte de año, esa oración ahi dice el titulo y por gráfica cambia
-        options:{
-          title:{
-            display:true,
-            text: 'Cantidad de personas que ingresaron en 20'+anio,
-            fontSize:15
-          },
-          legend:{
-            position:"right",
-            labels:{
-              fontColor:"#000"
-            }
-          },
-          responsive:true,
-          maintainAspectRatio: false,
-          scales:{
-            xAxes:[{
-              gridLines:{
-                display:false
-              }
-            }]
-          }
-        }
-      });
-    },function(errorObject){
-      console.log("The read failed "+errorObject.code);
-    });
-  }
-
-  function datosSemana(anio, mesr){
-    let grafico = document.getElementById('graficoanio').getContext('2d'); //aqui mando a llamar al canvas desde el archivo html
-    fecharef.on("value",function(snapshot){ //Aqui realizo la conexion, si miras arriba la variable fecharef tiene la direccion de firebase
-      var key = Object.keys(snapshot.val()); //Jalo las llaves para poder obtener la data y que cantidad hay
-      //console.log(key);
-      semanas = [0,0,0,0]
-      for(i=0;i<key.length;i++){ //Recorrer todos los objetos
-        // console.log('funciona');
-        var id = key[i]; //Asi busco en firebase
-        var conn2 = firebase.database().ref('fecha/'+id); //Aqui esa conexion la utilizo para poder buscar cada objeto por separado
-        conn2.on('value',function(snapshot){
-          connfecha = snapshot.val().fecha; //Aqui obtengo la fecha del objeto en firebase. dice fecha porque asi se llama el atributo en firebase
-         
-          res = connfecha.substring(6,8); //Aqui obtento el substring del año, osea para ver si es 19 por ejemplo
-          //console.log(res)
-          if(res == anio){
-            
-            mes = connfecha.substring(3,5);
-            //console.log(mes)
-            //console.log(res)
-            if(mes == mesr){
-
-              dia = connfecha.substring(0,2);
-              dia = parseInt(dia, 10);
-              cons
-              if(dia <= 7){ 
-                semanas[0] += 1
-              }
-              if(dia > 7 || dia <= 14){
-                semanas[1] += 1
-              }
-              if(dia > 14 || dia <= 21){
-                semanas[2] += 1
-              }
-              if(dia > 21){
-                semanas[3] += 1
-              }
-            }
-          }
-        });
-      }
-      console.log(semanas);
+      console.log(meses);
       let massPopChart = new Chart(grafico,{ //Aqui instancio la grafica
         type: 'bar',//Para que sea de barras
         data:{
@@ -603,4 +503,4 @@ const firebaseConfig = {
   // leerDatostotales();
   // datosFecha('26/05/19');
   //datosanio('19');
-  //console.log(leerDatostotales());
+//console.log(leerDatostotales());
