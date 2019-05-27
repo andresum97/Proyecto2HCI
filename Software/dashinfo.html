@@ -452,7 +452,10 @@
   </div>
   <!-- End Footer area-->
   <!-- jquery
-		============================================ -->
+    ============================================ -->
+    <script>
+      if (typeof module === 'object') {window.module = module; module = undefined;}
+      </script>
   <script src="js/vendor/jquery-1.12.4.min.js"></script>
   <!-- bootstrap JS
 		============================================ -->
@@ -511,6 +514,7 @@
   <!-- main JS
 		============================================ -->
   <script src="js/main.js"></script>
+  <script>if (window.module) module = window.module;</script>
   <script> require('./pass.js')</script>
 </body>
 
