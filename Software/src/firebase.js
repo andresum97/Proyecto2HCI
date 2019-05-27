@@ -277,6 +277,7 @@ const firebaseConfig = {
 
   function mesTabla(mes1,ani){
     var tabla = document.getElementById('tablames');
+    var total = document.getElementById('totalpersonas');
     tabla.innerHTML = ``;
     var anio = ani.substring(2,4);
     var mes = '05';
@@ -315,7 +316,7 @@ const firebaseConfig = {
     console.log(mes);
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
-      cont = 0;
+      var cont = 0;
       for(i=0;i<key.length;i++){
         var id = key[i];
         var conn2 = firebase.database().ref('fecha/'+id);
@@ -340,17 +341,19 @@ const firebaseConfig = {
           }
         });
       }
+      total.innerHTML = "Total de personas: "+cont;
     });
   }
 
   function anioTabla(ani){
     var tabla = document.getElementById('tablaanio');
+    var total = document.getElementById('totalpersonas');
     tabla.innerHTML = ``;
     anio = ani.substring(2,4)
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       meses = [0,0,0,0,0,0,0,0,0,0,0,0];
-      cont = 0
+      var cont = 0
       for(i=0;i<key.length;i++){
         // console.log('funciona');
         var id = key[i];
@@ -378,6 +381,7 @@ const firebaseConfig = {
           }
         });
       }//For
+      total.innerHTML = "Total de personas: "+cont;
   },function(errorObject){
     console.log("The read failed "+errorObject.code);
   });
