@@ -65,7 +65,7 @@
   
 </head>
 
-<body onload="anioTabla('19')">
+<body onload="anioTabla('2019')">
   <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -245,19 +245,19 @@
                       <h2>Año: </h2>
                     </div>
                     <div class="bootstrap-select fm-cmp-mg">
-                      <select class="selectpicker">
+                      <select class="selectpicker" id="anio1">
                         <option>2019</option>
                         <option>2018</option>
-                        <option>2017</option>
+                        <!-- <option>2017</option>
                         <option>2016</option>
                         <option>2015</option>
-                        <option>2014</option>
+                        <option>2014</option> -->
                       </select>
                     </div>
                   </div>
                 </div>
                 <div class="form-example-int mg-t-15">
-                    <button style="margin-left: 60px; width: 130px" class="btn btn-success notika-btn-success waves-effect">Generar</button>
+                    <button style="margin-left: 60px; width: 130px" class="btn btn-success notika-btn-success waves-effect" onclick="anioTabla(document.getElementById('anio1').value)">Generar</button>
                     <button style="margin-left: 15px; width: 130px; box-shadow:0 2px 5px rgba(0,0,0,.16), 0 2px 10px rgba(0,0,0,.12);" class="btn btn-default notika-btn-success waves-effect">Borrar</button>
                 </div>
               </div>
