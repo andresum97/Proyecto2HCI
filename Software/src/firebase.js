@@ -67,8 +67,9 @@ const firebaseConfig = {
     });
   }
 
-  function datosanio(anio){
-    let grafico = document.getElementById('graficoanio').getContext('2d');
+
+
+  function anioTabla(anio){
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       meses = [0,0,0,0,0,0,0,0,0,0,0,0];
@@ -122,14 +123,74 @@ const firebaseConfig = {
           }
         });
       }
+  },function(errorObject){
+    console.log("The read failed "+errorObject.code);
+  });
+}
+
+  function datosanio(anio){
+    let grafico = document.getElementById('graficoanio').getContext('2d'); //aqui mando a llamar al canvas desde el archivo html
+    fecharef.on("value",function(snapshot){ //Aqui realizo la conexion, si miras arriba la variable fecharef tiene la direccion de firebase
+      var key = Object.keys(snapshot.val()); //Jalo las llaves para poder obtener la data y que cantidad hay
+      meses = [0,0,0,0,0,0,0,0,0,0,0,0]; //Array donde guarda la info de personas por mes por eso hay 12 espacios
+      for(i=0;i<key.length;i++){ //Recorrer todos los objetos
+        // console.log('funciona');
+        var id = key[i]; //Asi busco en firebase
+        var conn2 = firebase.database().ref('fecha/'+id); //Aqui esa conexion la utilizo para poder buscar cada objeto por separado
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha; //Aqui obtengo la fecha del objeto en firebase. dice fecha porque asi se llama el atributo en firebase
+          res = connfecha.substring(6,8); //Aqui obtento el substring del año, osea para ver si es 19 por ejemplo
+          if(res == anio){ //Comparo si el año es el que me pidieron, si es 18 o 19
+            console.log(connfecha);
+            mes = connfecha.substring(3,5);  //Aqui obtengo el mes
+            console.log(mes);
+            if(mes == '01'){ //Aqui comparo que mes es, y depende del mes aumenta el array la posición o el mes seleccionado
+              meses[0] += 1
+            }
+            if(mes == '02'){
+              meses[1] += 1
+            }
+            if(mes == '03'){
+              meses[2] += 1
+            }
+            if(mes == '04'){
+              meses[3] += 1
+            }
+            if(mes == '05'){
+              meses[4] += 1
+            }
+            if(mes == '06'){
+              meses[5] += 1
+            }
+            if(mes == '07'){
+              meses[6] += 1
+            }
+            if(mes == '08'){
+              meses[7] += 1
+            }
+            if(mes == '09'){
+              meses[8] += 1
+            }
+            if(mes == '10'){
+              meses[9] += 1
+            }
+            if(mes == '11'){
+              meses[10] += 1
+            }
+            if(mes == '12'){
+              meses[11] += 1
+            }
+          }
+        });
+      }
       console.log(meses);
-      let massPopChart = new Chart(grafico,{
-        type: 'bar',
+      let massPopChart = new Chart(grafico,{ //Aqui instancio la grafica
+        type: 'bar',//Para que sea de barras
         data:{
-          labels:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+          labels:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],//La info de abajo de la gráfica
           datasets:[{
-            label:'Cantidad de personas por mes',
-            data:meses,
+            label:'Personas',
+            data:meses,//Aqui meto el array de info
             backgroundColor:[
               'rgb(217,136,128)',
               'rgb(241,148,138)',
@@ -143,10 +204,25 @@ const firebaseConfig = {
               'rgb(125,206,160)',
               'rgb(130,224,170)',
               'rgb(247,220,111)'
-            ]
+            ],
+            borderWidth:1,
+            borderColor:'#777',
+            hoverBorderWidth:3,
+            hoverBorderColor: '#000'
           }]
-        },
+        },//Esto de aqui dejalo igual, salvo por la parte de año, esa oración ahi dice el titulo y por gráfica cambia
         options:{
+          title:{
+            display:true,
+            text: 'Cantidad de personas que ingresaron en 20'+anio,
+            fontSize:15
+          },
+          legend:{
+            position:"right",
+            labels:{
+              fontColor:"#000"
+            }
+          },
           responsive:true,
           maintainAspectRatio: false,
           scales:{
@@ -164,5 +240,5 @@ const firebaseConfig = {
   }
   // leerDatostotales();
   // datosFecha('26/05/19');
-  datosanio('19');
+  //datosanio('19');
   //console.log(leerDatostotales());
