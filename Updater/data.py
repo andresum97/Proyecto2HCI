@@ -1,6 +1,10 @@
 import serial
+import pygame
 import time
+pygame.mixer.init()
+
 ino_port = "COM5"
+bienvenida = pygame.mixer.Sound("./bienvenida.wav")
 
 try:
   serial_port = serial.Serial(port = ino_port, baudrate = 9600,bytesize = 8, timeout = 0.05, stopbits = 1)
@@ -13,6 +17,8 @@ try:
       print('Cantidad de personas: ' + quantity + '\n')
       data.write(quantity + " " + time.strftime("%H:%M:%S") + " " + time.strftime("%d/%m/%y") + '\n')
       data.flush()
+      bienvenida.play()
+      time.sleep(2)
 except (KeyboardInterrupt, SystemExit):
   data.close()
   quit()
