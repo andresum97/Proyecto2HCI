@@ -70,9 +70,11 @@ const firebaseConfig = {
 
 
   function anioTabla(anio){
+    var tabla = document.getElementById('tablaanio');
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
       meses = [0,0,0,0,0,0,0,0,0,0,0,0];
+      cont = 0
       for(i=0;i<key.length;i++){
         // console.log('funciona');
         var id = key[i];
@@ -81,48 +83,25 @@ const firebaseConfig = {
           connfecha = snapshot.val().fecha;
           res = connfecha.substring(6,8);
           if(res == anio){
+            cont +=1;
             console.log(connfecha);
-            mes = connfecha.substring(3,5); 
-            console.log(mes);
-            if(mes == '01'){
-              meses[0] += 1
-            }
-            if(mes == '02'){
-              meses[1] += 1
-            }
-            if(mes == '03'){
-              meses[2] += 1
-            }
-            if(mes == '04'){
-              meses[3] += 1
-            }
-            if(mes == '05'){
-              meses[4] += 1
-            }
-            if(mes == '06'){
-              meses[5] += 1
-            }
-            if(mes == '07'){
-              meses[6] += 1
-            }
-            if(mes == '08'){
-              meses[7] += 1
-            }
-            if(mes == '09'){
-              meses[8] += 1
-            }
-            if(mes == '10'){
-              meses[9] += 1
-            }
-            if(mes == '11'){
-              meses[10] += 1
-            }
-            if(mes == '12'){
-              meses[11] += 1
-            }
+            hora = snapshot.val().hora;
+            dia = connfecha.substring(0,2);
+            mes = connfecha.substring(3,5);
+            an = '20'+anio;
+            const nuevafila = `
+              <tr>
+              <td>${cont}</td>
+              <td>${dia}</td>
+              <td>${mes}</td>
+              <td>${an}</td>
+              <td>${hora}</td>
+              </tr>
+            `;
+           tabla.innerHTML += nuevafila; 
           }
         });
-      }
+      }//For
   },function(errorObject){
     console.log("The read failed "+errorObject.code);
   });
