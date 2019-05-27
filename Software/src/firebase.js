@@ -500,6 +500,96 @@ const firebaseConfig = {
       console.log("The read failed "+errorObject.code);
     });
   }
+
+  function datosHora(diar, horar, mesr,){
+    let grafico = document.getElementById('graficoanio').getContext('2d'); 
+    fecharef.on("value",function(snapshot){ 
+      var key = Object.keys(snapshot.val()); 
+      
+      semanas = [0,0,0,0]
+      for(i=0;i<key.length;i++){ 
+        
+        var id = key[i];
+        var conn2 = firebase.database().ref('fecha/'+id); 
+        conn2.on('value',function(snapshot){
+          connfecha = snapshot.val().fecha; 
+         
+          res = connfecha.substring(6,8); 
+          
+          if(res == anio){
+            
+            mes = connfecha.substring(3,5);
+            console.log(mes)
+            console.log(mesr)
+            if(mes == mesr){
+
+              dia = connfecha.substring(0,2);
+              dia = parseInt(dia, 10);
+              console.log(dia)
+              if(dia <= 7){ 
+                semanas[0] += 1
+              }
+              if(dia > 7 && dia <= 14){
+                semanas[1] += 1
+              }
+              if(dia > 14 && dia <= 21){
+                semanas[2] += 1
+              }
+              if(dia > 21){
+                semanas[3] += 1
+              }
+            }
+          }
+        });
+      }
+      console.log(semanas);
+      
+      let massPopChart = new Chart(grafico,{ 
+        type: 'bar',
+        data:{
+          labels:['1-7','8-14','15-21','22-35'],
+          datasets:[{
+            label:'Personas',
+            data:semanas,
+            backgroundColor:[
+              'rgb(217,136,128)',
+              'rgb(241,148,138)',
+              'rgb(195,155,211)',
+              'rgb(187,143,206)'
+            ],
+            borderWidth:1,
+            borderColor:'#777',
+            hoverBorderWidth:3,
+            hoverBorderColor: '#000'
+          }]
+        },
+        options:{
+          title:{
+            display:true,
+            text: 'Cantidad de personas que ingresaron cada semana en el mes de '+mesr+' en el año 20'+anio,
+            fontSize:15
+          },
+          legend:{
+            position:"right",
+            labels:{
+              fontColor:"#000"
+            }
+          },
+          responsive:true,
+          maintainAspectRatio: false,
+          scales:{
+            xAxes:[{
+              gridLines:{
+                display:false
+              }
+            }]
+          }
+        }
+      });
+    },function(errorObject){
+      console.log("The read failed "+errorObject.code);
+    });
+  }
   // leerDatostotales();
   // datosFecha('26/05/19');
   //datosanio('19');
