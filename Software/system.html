@@ -371,7 +371,7 @@
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Usuario</th>
-                                            <th>Nickname</th>
+                                            <th>Correo</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaadmin">
@@ -506,10 +506,16 @@
 		============================================ -->
     <script src="js/tawk-chat.js"></script>
     <script>if (window.module) module = window.module;</script>
-    <script> require('./pass.js')</script>
+        
     <script>
         mostrarDatos('19','05','27');
+        mostraradmin();
     </script>
+    <script>
+            var signOutBtn = document.getElementById('signOutBtn');
+            signOutBtn.addEventListener('click', logOut);
+          </script>
+        
 </body>
 
 </html>

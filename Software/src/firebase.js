@@ -103,7 +103,36 @@ const firebaseConfig = {
   }
 
   function mostraradmin(){
-    
+    adminref.on("value",function(snapshot){
+      var tabla = document.getElementById('tablaadmin');
+      var key = Object.keys(snapshot.val());
+      var cont = 0;
+      for(i=0;i<key.length;i++){
+        cont+=1;
+        var id = key[i];
+        var conn2 = firebase.database().ref('administradores/'+id);
+        conn2.on('value',function(snapshot){
+          nombre = snapshot.val().Nombre;
+          apellido = snapshot.val().Apellido;
+          usuario = snapshot.val().Usuario;
+          correo = snapshot.val().correo;
+          console.log(nombre);
+          console.log(apellido);
+          console.log(usuario);
+          console.log(correo);
+          const nuevafila = `
+          <tr>
+          <td>${cont}</td>
+          <td>${nombre}</td>
+          <td>${apellido}</td>
+          <td>${usuario}</td>
+          <td>${correo}</td>
+          </tr>
+        `;
+       tabla.innerHTML += nuevafila;
+        });
+      }
+    });
   }
 
   function datosFecha(fecha){
