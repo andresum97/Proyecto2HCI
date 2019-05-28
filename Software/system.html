@@ -57,6 +57,7 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="src/firebase.js"></script>
 </head>
 
 <body>
@@ -233,7 +234,7 @@
                         <div class="dash-widget-visits"></div>
                         <div class="past-statistic-an">
                             <div class="past-statistic-ctn">
-                                <h3><span class="counter">3500</span></h3>
+                                <h3 id="lect2"><span class="counter">3500</span></h3>
                                 <p>Total de lecturas</p>
                             </div>
                             <div class="past-statistic-graph">
@@ -242,7 +243,7 @@
                         </div>
                         <div class="past-statistic-an">
                             <div class="past-statistic-ctn">
-                                <h3><span class="counter">45</span></h3>
+                                <h3 id="dia2"><span class="counter">45</span></h3>
                                 <p>Total de lecturas por día</p>
                             </div>
                             <div class="past-statistic-graph">
@@ -251,7 +252,7 @@
                         </div>
                         <div class="past-statistic-an">
                             <div class="past-statistic-ctn">
-                                <h3><span class="counter">5</span></h3>
+                                <h3 id="hora"><span class="counter">5</span></h3>
                                 <p>Total de lecturas por hora</p>
                             </div>
                             <div class="past-statistic-graph">
@@ -272,7 +273,7 @@
                     <div style="margin-bottom: 30px;"
                         class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter">50,000</span></h2>
+                            <h2 id="lectotal"><span class="counter">50,000</span></h2>
                             <p>Total de lecturas realizadas</p>
                         </div>
                         <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
@@ -281,8 +282,8 @@
                 <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2><span class="counter">90,000</span>k</h2>
-                            <p>Total del lecturas por día</p>
+                            <h2 id="lecmes"><span class="counter">90,000</span>k</h2>
+                            <p>Total del lecturas por mes</p>
                         </div>
                         <div class="sparkline-bar-stats2">1,4,8,3,5,6,4,8,3,3,9,5</div>
                     </div>
@@ -290,8 +291,8 @@
                 <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30 dk-res-mg-t-30">
                         <div class="website-traffic-ctn">
-                            <h2>$<span class="counter">40,000</span></h2>
-                            <p>Total de lecturas por hora</p>
+                            <h2 id="lecdia"><span class="counter">40,000</span></h2>
+                            <p>Total de lecturas por dia</p>
                         </div>
                         <div class="sparkline-bar-stats3">4,2,8,2,5,6,3,8,3,5,9,5</div>
                     </div>
@@ -367,14 +368,14 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Usuario</th>
                                             <th>Nickname</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
+                                    <tbody id="tablaadmin">
+                                        <!-- <tr>
                                             <td>1</td>
                                             <td>Alexandra</td>
                                             <td>Christopher</td>
@@ -401,7 +402,7 @@
                                             <td>Christin</td>
                                             <td>@mitchell4u</td>
                                             <td>AdskiDeAnus</td>
-                                        </tr>
+                                        </tr> -->
 
                                     </tbody>
                                 </table>
@@ -506,6 +507,9 @@
     <script src="js/tawk-chat.js"></script>
     <script>if (window.module) module = window.module;</script>
     <script> require('./pass.js')</script>
+    <script>
+        mostrarDatos('19','05','27');
+    </script>
 </body>
 
 </html>

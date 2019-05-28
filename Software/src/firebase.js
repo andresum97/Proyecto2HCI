@@ -20,7 +20,7 @@ const firebaseConfig = {
 
   var db= firebase.database();
   var fecharef = firebase.database().ref().child("fecha");
- 
+  var adminref = firebase.database().ref().child("administradores");
   // console.log(firebase.auth) // Undefined
   // console.log(firebase.default.auth) // Function
   function leerDatostotales(){
@@ -97,10 +97,15 @@ const firebaseConfig = {
       lecturastotales2.innerHTML = conttotal;
       lecturasmes.innerHTML = contmes;
       lecturasdia.innerHTML = contdia;
-      lecturasanio.innerHTML = contanio;
       lecturahora.innerHTML = conthora;
+      lecturasanio.innerHTML = contanio;
     });
   }
+
+  function mostraradmin(){
+    
+  }
+
   function datosFecha(fecha){
     fecharef.on("value",function(snapshot){
       var key = Object.keys(snapshot.val());
