@@ -4,7 +4,7 @@ import time
 pygame.mixer.init()
 
 ino_port = "COM5"
-bienvenida = pygame.mixer.Sound("./bienvenida.wav")
+bienvenida = pygame.mixer.Sound("./bienvenidos.wav")
 
 try:
   serial_port = serial.Serial(port = ino_port, baudrate = 9600,bytesize = 8, timeout = 0.05, stopbits = 1)
