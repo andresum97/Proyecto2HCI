@@ -651,7 +651,7 @@ const firebaseConfig = {
         options:{
           title:{
             display:true,
-            text: 'Cantidad de personas que ingresaron cada semana en el mes de '+mesr+' en el año 20'+anio,
+            text: 'Cantidad de personas que ingresaron cada semana en el mes de Mayo en el año 20'+anio,
             fontSize:15
           },
           legend:{
